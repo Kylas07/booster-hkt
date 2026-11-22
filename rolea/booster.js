@@ -10,7 +10,7 @@
   "use strict";
 
   var CONFIG = {
-    API: "https://TON-PROJET.vercel.app", // ← l'adresse de ton API Vercel, sans / à la fin
+    API: "https://booster-hkt-booster-api.vercel.app", // adresse de ton API Vercel, sans / à la fin
     GAME_ZONE: "booster-zone",
     ADMIN_ZONE: "booster-admin",
     PROFILE_ENABLED: true,
@@ -51,6 +51,11 @@
     var headers = {};
     if (opts.body) headers["Content-Type"] = "application/json";
     if (opts.code) headers["X-Player-Code"] = opts.code;
+    if (opts.who) { // mode ouvert : on s'identifie par le personnage connecté
+      headers["X-Character-Id"] = encodeURIComponent(String(opts.who.id));
+      headers["X-Character-Name"] = encodeURIComponent(opts.who.name || "");
+      headers["X-Character-Slug"] = encodeURIComponent(opts.who.slug || "");
+    }
     if (opts.admin) headers["X-Admin-Key"] = opts.admin;
     return fetch(CONFIG.API + path, {
       method: opts.method || "GET",
@@ -394,7 +399,7 @@
     }
 
     function render() {
-      var code = store.get(key);
+      var code = store.get(key) || (state.cat && state.cat.openMode ? "open" : null);
       var html = "";
       if (state.message) html += '<div class="rb-box rb-error" role="alert">' + esc(state.message) + '</div>';
 
@@ -433,6 +438,13 @@
         html = headHtml(character.name) + html;
       }
       zone.innerHTML = '<div class="rb">' + html + '</div>';
+    }
+
+    // Identification : par le personnage connecté (mode ouvert) ou par le code joueur
+    function auth() {
+      if (state.cat && state.cat.openMode) return { who: { id: character.id, name: character.name, slug: character.slug } };
+      var code = store.get(key);
+      return code ? { code: code } : null;
     }
 
     function guaranteedLabel() {
@@ -537,10 +549,12 @@
     }
 
     function load() {
-      var code = store.get(key);
-      return Promise.all([catalog(), code ? api("/me", { code: code }) : null]).then(function (res) {
-        state.cat = res[0];
-        if (res[1]) { state.status = res[1].status; state.owned = res[1].owned; }
+      return catalog().then(function (cat) {
+        state.cat = cat;
+        var a = auth();
+        return a ? api("/me", a) : null;
+      }).then(function (me) {
+        if (me) { state.status = me.status; state.owned = me.owned; }
         render();
       }).catch(function (e) {
         if (e.status === 401) { store.del(key); state.message = "Ce code n'est plus valide. Inscris-toi ou saisis un nouveau code."; }
@@ -556,7 +570,9 @@
       state.phase = "opening";
       state.message = "";
       btn.classList.add("rb-pack-wait");
-      Promise.all([api("/open", { method: "POST", code: store.get(key) }), wait(700)]).then(function (res) {
+      var a = auth();
+      a.method = "POST";
+      Promise.all([api("/open", a), wait(700)]).then(function (res) {
         var data = res[0];
         state.status = data.status;
         btn.classList.remove("rb-pack-wait");

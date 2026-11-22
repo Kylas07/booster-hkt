@@ -14,10 +14,16 @@ if (dbUrl.Length == 0) throw new InvalidOperationException("DATABASE_URL manquan
 var adminKey = Env("ADMIN_KEY");
 if (adminKey.Length < 12) Console.Error.WriteLine("ADMIN_KEY absent ou trop court (12 caractères min.) : le panneau staff est désactivé.");
 
-var origins = Env("ALLOWED_ORIGIN").Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+// Tolère les erreurs de saisie courantes : espaces, majuscules, "/" final
+var origins = Env("ALLOWED_ORIGIN").Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+    .Select(o => o.TrimEnd('/').ToLowerInvariant())
+    .ToArray();
 if (origins.Length == 0) Console.Error.WriteLine("ALLOWED_ORIGIN vide : aucun site ne pourra appeler l'API.");
+else Console.WriteLine($"Origines autorisées : {string.Join(", ", origins)}");
 
 var autoApprove = Env("AUTO_APPROVE") == "true";
+// Mode ouvert (forum privé) : pas de code ni de validation, le joueur est reconnu par son personnage Rolea
+var openMode = Env("OPEN_MODE") == "true";
 var port = Env("PORT") is { Length: > 0 } p ? p : "80";
 builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
 
@@ -25,7 +31,7 @@ builder.Services.AddSingleton(_ => NpgsqlDataSource.Create(Db.ToConnectionString
 builder.Services.AddSingleton(Catalog.Load(Path.Combine(AppContext.BaseDirectory, "cards.json")));
 builder.Services.AddCors(o => o.AddDefaultPolicy(policy => policy
     .WithOrigins(origins)
-    .WithHeaders("Content-Type", "X-Player-Code", "X-Admin-Key")
+    .WithHeaders("Content-Type", "X-Player-Code", "X-Admin-Key", "X-Character-Id", "X-Character-Name", "X-Character-Slug")
     .WithMethods("GET", "POST", "DELETE")));
 
 var app = builder.Build();
@@ -55,7 +61,7 @@ static object StatusOf(Player p)
 
 app.MapGet("/ping", () => "pong");
 
-app.MapGet("/cards", (Catalog cat) => Results.Ok(cat.PublicView()));
+app.MapGet("/cards", (Catalog cat) => Results.Ok(cat.PublicView(openMode)));
 
 // Collection d'un personnage, pour l'afficher sur son profil
 app.MapGet("/collection/{slug}", async (string slug, NpgsqlDataSource ds, Catalog cat) =>
@@ -75,6 +81,19 @@ app.MapGet("/collection/{slug}", async (string slug, NpgsqlDataSource ds, Catalo
 // =====================================================================
 // Joueur
 // =====================================================================
+
+// Code joueur (par défaut), ou personnage Rolea en mode ouvert (créé à sa première visite)
+async Task<Player?> ResolvePlayerAsync(HttpContext ctx, NpgsqlDataSource ds)
+{
+    if (!openMode) return await Db.PlayerByCodeAsync(ds, ctx.Request.Headers["X-Player-Code"]);
+
+    string Header(string name) => Uri.UnescapeDataString(ctx.Request.Headers[name].ToString()).Trim();
+    var id = Header("X-Character-Id");
+    var name = Header("X-Character-Name");
+    var slug = Header("X-Character-Slug");
+    if (id.Length is 0 or > 100 || name.Length is 0 or > 100 || slug.Length > 100) return null;
+    return await Db.UpsertOpenPlayerAsync(ds, id, slug, name);
+}
 
 // Inscription : le joueur reçoit son code tout de suite, le staff valide ensuite.
 app.MapPost("/register", async (RegisterRequest req, NpgsqlDataSource ds) =>
@@ -101,8 +120,8 @@ app.MapPost("/register", async (RegisterRequest req, NpgsqlDataSource ds) =>
 
 app.MapGet("/me", async (HttpContext ctx, NpgsqlDataSource ds) =>
 {
-    var player = await Db.PlayerByCodeAsync(ds, ctx.Request.Headers["X-Player-Code"]);
-    if (player is null) return Error(401, "Code inconnu.");
+    var player = await ResolvePlayerAsync(ctx, ds);
+    if (player is null) return Error(401, openMode ? "Personnage invalide." : "Code inconnu.");
 
     await using var conn = await ds.OpenConnectionAsync();
     return Results.Ok(new { status = StatusOf(player), owned = await Db.OwnedAsync(conn, player.Id) });
@@ -110,8 +129,8 @@ app.MapGet("/me", async (HttpContext ctx, NpgsqlDataSource ds) =>
 
 app.MapPost("/open", async (HttpContext ctx, NpgsqlDataSource ds, Catalog cat) =>
 {
-    var player = await Db.PlayerByCodeAsync(ds, ctx.Request.Headers["X-Player-Code"]);
-    if (player is null) return Error(401, "Code inconnu.");
+    var player = await ResolvePlayerAsync(ctx, ds);
+    if (player is null) return Error(401, openMode ? "Personnage invalide." : "Code inconnu.");
     if (!player.Approved) return Error(403, "Ton inscription attend la validation du staff.");
 
     await using var conn = await ds.OpenConnectionAsync();

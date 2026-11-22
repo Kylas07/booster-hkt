@@ -113,6 +113,21 @@ public static class Db
         return await r.ReadAsync() ? ReadPlayer(r) : null;
     }
 
+    /// <summary>Mode ouvert : crée le joueur à sa première visite (validé d'office), met à jour son nom sinon.</summary>
+    public static async Task<Player> UpsertOpenPlayerAsync(NpgsqlDataSource ds, string characterId, string slug, string name)
+    {
+        await using var conn = await ds.OpenConnectionAsync();
+        await using var cmd = Cmd(conn, null, $"""
+            INSERT INTO players (character_id, slug, name, code_hash, approved)
+            VALUES ($1, $2, $3, $4, true)
+            ON CONFLICT (character_id) DO UPDATE SET slug = EXCLUDED.slug, name = EXCLUDED.name, approved = true
+            RETURNING {PlayerColumns}
+            """, characterId, slug, name, HashCode(NewCode()));
+        await using var r = await cmd.ExecuteReaderAsync();
+        await r.ReadAsync();
+        return ReadPlayer(r);
+    }
+
     public static async Task<Player?> PlayerByIdAsync(NpgsqlConnection conn, NpgsqlTransaction? tx, int id)
     {
         await using var cmd = Cmd(conn, tx, $"SELECT {PlayerColumns} FROM players WHERE id = $1", id);

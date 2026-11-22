@@ -117,8 +117,9 @@ public sealed class Catalog
     }
 
     /// <summary>Ce que les joueurs peuvent voir (taux inclus, par transparence).</summary>
-    public object PublicView() => new
+    public object PublicView(bool openMode = false) => new
     {
+        openMode,
         packSize = PackSize,
         guaranteedMinRarity = Rarities[_guaranteedRank].Id,
         rarities = Rarities.Select(r => new

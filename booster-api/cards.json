@@ -1,0 +1,37 @@
+{
+  // Nombre de cartes par booster
+  "packSize": 5,
+
+  // La dernière carte de chaque booster est au moins de cette rareté
+  "guaranteedMinRarity": "peu-commune",
+
+  // Du plus commun au plus rare. "weight" = poids relatif (70 + 22 + 7 + 1 = 100, donc ici ce sont des %)
+  // "finish" = effet de la carte : "normal", "argent", "or" ou "foil" (holographique)
+  "rarities": [
+    { "id": "commune",     "label": "Commune",     "weight": 70, "color": "#8a9099", "finish": "normal" },
+    { "id": "peu-commune", "label": "Peu commune", "weight": 22, "color": "#9ca3af", "finish": "argent" },
+    { "id": "rare",        "label": "Rare",        "weight": 7,  "color": "#d4a017", "finish": "or" },
+    { "id": "legendaire",  "label": "Légendaire",  "weight": 1,  "color": "#a855f7", "finish": "foil" }
+  ],
+
+  // Tes cartes. "id" ne doit JAMAIS changer une fois en ligne (c'est ce qui est stocké dans les collections).
+  // "image" (optionnel) : URL https d'une illustration au format 350×500 px (ratio 7:10).
+  // "finish" (optionnel) : remplace la finition de la rareté pour cette carte seulement.
+  // "weight" (optionnel, 1 par défaut) : plus fréquente dans sa rareté.
+  "cards": [
+    { "id": "c001", "name": "Commune 01", "rarity": "commune", "description": "Remplace-moi par ta carte." },
+    { "id": "c002", "name": "Commune 02", "rarity": "commune" },
+    { "id": "c003", "name": "Commune 03", "rarity": "commune" },
+    { "id": "c004", "name": "Commune 04", "rarity": "commune" },
+    { "id": "c005", "name": "Commune 05", "rarity": "commune" },
+    { "id": "c006", "name": "Commune 06", "rarity": "commune" },
+    { "id": "u001", "name": "Peu commune 01", "rarity": "peu-commune" },
+    { "id": "u002", "name": "Peu commune 02", "rarity": "peu-commune" },
+    { "id": "u003", "name": "Peu commune 03", "rarity": "peu-commune" },
+    { "id": "u004", "name": "Peu commune 04", "rarity": "peu-commune" },
+    { "id": "r001", "name": "Rare 01", "rarity": "rare" },
+    { "id": "r002", "name": "Rare 02", "rarity": "rare" },
+    { "id": "r003", "name": "Rare 03", "rarity": "rare" },
+    { "id": "l001", "name": "Légendaire 01", "rarity": "legendaire" }
+  ]
+}

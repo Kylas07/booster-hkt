@@ -38,6 +38,13 @@ public static class Db
             at         timestamptz NOT NULL DEFAULT now()
         );
         CREATE INDEX IF NOT EXISTS openings_player_idx ON openings (player_id, at DESC);
+
+        CREATE TABLE IF NOT EXISTS player_slugs (
+            player_id  integer NOT NULL REFERENCES players(id) ON DELETE CASCADE,
+            slug       text NOT NULL,
+            PRIMARY KEY (player_id, slug)
+        );
+        CREATE INDEX IF NOT EXISTS player_slugs_slug_idx ON player_slugs (slug);
         """;
 
     /// <summary>Accepte une URL postgres:// (format Neon / Vercel) ou une chaîne Npgsql classique.</summary>
@@ -114,18 +121,30 @@ public static class Db
     }
 
     /// <summary>Mode ouvert : crée le joueur à sa première visite (validé d'office), met à jour son nom sinon.</summary>
-    public static async Task<Player> UpsertOpenPlayerAsync(NpgsqlDataSource ds, string characterId, string slug, string name)
+    public static async Task<Player> UpsertOpenPlayerAsync(NpgsqlDataSource ds, string characterId, string slug, string name, string[]? slugs = null)
     {
         await using var conn = await ds.OpenConnectionAsync();
-        await using var cmd = Cmd(conn, null, $"""
+        Player player;
+        await using (var cmd = Cmd(conn, null, $"""
             INSERT INTO players (character_id, slug, name, code_hash, approved)
             VALUES ($1, $2, $3, $4, true)
             ON CONFLICT (character_id) DO UPDATE SET slug = EXCLUDED.slug, name = EXCLUDED.name, approved = true
             RETURNING {PlayerColumns}
-            """, characterId, slug, name, HashCode(NewCode()));
-        await using var r = await cmd.ExecuteReaderAsync();
-        await r.ReadAsync();
-        return ReadPlayer(r);
+            """, characterId, slug, name, HashCode(NewCode())))
+        await using (var r = await cmd.ExecuteReaderAsync())
+        {
+            await r.ReadAsync();
+            player = ReadPlayer(r);
+        }
+
+        if (slugs is not null)
+        {
+            await using var tx = await conn.BeginTransactionAsync();
+            await ExecAsync(conn, tx, "DELETE FROM player_slugs WHERE player_id = $1", player.Id);
+            await ExecAsync(conn, tx, "INSERT INTO player_slugs (player_id, slug) SELECT $1, unnest($2::text[]) ON CONFLICT DO NOTHING", player.Id, slugs);
+            await tx.CommitAsync();
+        }
+        return player;
     }
 
     public static async Task<Player?> PlayerByIdAsync(NpgsqlConnection conn, NpgsqlTransaction? tx, int id)

@@ -31,7 +31,7 @@ builder.Services.AddSingleton(_ => NpgsqlDataSource.Create(Db.ToConnectionString
 builder.Services.AddSingleton(Catalog.Load(Path.Combine(AppContext.BaseDirectory, "cards.json")));
 builder.Services.AddCors(o => o.AddDefaultPolicy(policy => policy
     .WithOrigins(origins)
-    .WithHeaders("Content-Type", "X-Player-Code", "X-Admin-Key", "X-Character-Id", "X-Character-Name", "X-Character-Slug")
+    .WithHeaders("Content-Type", "X-Player-Code", "X-Admin-Key", "X-Character-Id", "X-Character-Name", "X-Character-Slug", "X-Character-Slugs")
     .WithMethods("GET", "POST", "DELETE")));
 
 var app = builder.Build();
@@ -68,7 +68,12 @@ app.MapGet("/collection/{slug}", async (string slug, NpgsqlDataSource ds, Catalo
 {
     await using var conn = await ds.OpenConnectionAsync();
     await using var cmd = Db.Cmd(conn, null,
-        "SELECT id, name FROM players WHERE lower(slug) = lower($1) AND approved LIMIT 1", slug);
+        """
+        SELECT p.id, p.name FROM players p
+        WHERE p.approved AND (lower(p.slug) = lower($1)
+           OR EXISTS (SELECT 1 FROM player_slugs s WHERE s.player_id = p.id AND s.slug = lower($1)))
+        ORDER BY p.id DESC LIMIT 1
+        """, slug);
     await using var r = await cmd.ExecuteReaderAsync();
     if (!await r.ReadAsync()) return Error(404, "Ce personnage ne joue pas aux boosters.");
     var (id, name) = (r.GetInt32(0), r.GetString(1));
@@ -92,7 +97,15 @@ async Task<Player?> ResolvePlayerAsync(HttpContext ctx, NpgsqlDataSource ds)
     var name = Header("X-Character-Name");
     var slug = Header("X-Character-Slug");
     if (id.Length is 0 or > 100 || name.Length is 0 or > 100 || slug.Length > 100) return null;
-    return await Db.UpsertOpenPlayerAsync(ds, id, slug, name);
+
+    // Mode "compte" : tous les personnages du compte, pour afficher la collection sur chacun de leurs profils
+    string[]? slugs = null;
+    if (ctx.Request.Headers.ContainsKey("X-Character-Slugs"))
+        slugs = ctx.Request.Headers["X-Character-Slugs"].ToString().Split(',', StringSplitOptions.RemoveEmptyEntries)
+            .Select(x => Uri.UnescapeDataString(x).Trim().ToLowerInvariant())
+            .Where(x => x.Length is > 0 and <= 100)
+            .Distinct().Take(50).ToArray();
+    return await Db.UpsertOpenPlayerAsync(ds, id, slug, name, slugs);
 }
 
 // Inscription : le joueur reçoit son code tout de suite, le staff valide ensuite.

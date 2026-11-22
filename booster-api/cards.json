@@ -1,6 +1,6 @@
 {
   // Nombre de cartes par booster
-  "packSize": 3,
+  "packSize": 5,
 
   // La dernière carte de chaque booster est au moins de cette rareté
   "guaranteedMinRarity": "peu-commune",
@@ -34,26 +34,26 @@
     { "id": "aster-u", "name": "Aster Sinclair", "rarity": "peu-commune", "description": "Homines", "image": "" },
     { "id": "aster-r", "name": "Aster Sinclair", "rarity": "rare", "description": "Homines", "image": "" },
     { "id": "aster-l", "name": "Aster Sinclair", "rarity": "legendaire", "description": "Homines", "image": "" },
-    // Bellion De Manicor
-    { "id": "bellion-c", "name": "Bellion De Manicor", "rarity": "commune", "description": "Homines", "image": "" },
-    { "id": "bellion-u", "name": "Bellion De Manicor", "rarity": "peu-commune", "description": "Homines", "image": "" },
-    { "id": "bellion-r", "name": "Bellion De Manicor", "rarity": "rare", "description": "Homines", "image": "" },
-    { "id": "bellion-l", "name": "Bellion De Manicor", "rarity": "legendaire", "description": "Homines", "image": "" },
-    // Colombe T.-Farrow
-    { "id": "colombe-c", "name": "Colombe T.Farrow", "rarity": "commune", "description": "Regeneratio", "image": "" },
-    { "id": "colombe-u", "name": "Colombe T.Farrow", "rarity": "peu-commune", "description": "Regeneratio", "image": "" },
-    { "id": "colombe-r", "name": "Colombe T.Farrow", "rarity": "rare", "description": "Regeneratio", "image": "" },
-    { "id": "colombe-l", "name": "Colombe T.Farrow", "rarity": "legendaire", "description": "Regeneratio", "image": "" },
+    // Bellion De Mani…  ← nom complet à remplacer dans les 4 lignes
+    { "id": "bellion-c", "name": "Bellion De Mani…", "rarity": "commune", "description": "Homines", "image": "" },
+    { "id": "bellion-u", "name": "Bellion De Mani…", "rarity": "peu-commune", "description": "Homines", "image": "" },
+    { "id": "bellion-r", "name": "Bellion De Mani…", "rarity": "rare", "description": "Homines", "image": "" },
+    { "id": "bellion-l", "name": "Bellion De Mani…", "rarity": "legendaire", "description": "Homines", "image": "" },
+    // Colombe T.-Farr…  ← nom complet à remplacer dans les 4 lignes
+    { "id": "colombe-c", "name": "Colombe T.-Farr…", "rarity": "commune", "description": "Regeneratio", "image": "" },
+    { "id": "colombe-u", "name": "Colombe T.-Farr…", "rarity": "peu-commune", "description": "Regeneratio", "image": "" },
+    { "id": "colombe-r", "name": "Colombe T.-Farr…", "rarity": "rare", "description": "Regeneratio", "image": "" },
+    { "id": "colombe-l", "name": "Colombe T.-Farr…", "rarity": "legendaire", "description": "Regeneratio", "image": "" },
     // Darcy Crestia
     { "id": "darcy-c", "name": "Darcy Crestia", "rarity": "commune", "description": "Vesperis", "image": "" },
     { "id": "darcy-u", "name": "Darcy Crestia", "rarity": "peu-commune", "description": "Vesperis", "image": "" },
     { "id": "darcy-r", "name": "Darcy Crestia", "rarity": "rare", "description": "Vesperis", "image": "" },
     { "id": "darcy-l", "name": "Darcy Crestia", "rarity": "legendaire", "description": "Vesperis", "image": "" },
-    // Selene de Manicor
-    { "id": "selene-c", "name": "Selene de Manicor", "rarity": "commune", "description": "Homines", "image": "" },
-    { "id": "selene-u", "name": "Selene de Manicor", "rarity": "peu-commune", "description": "Homines", "image": "" },
-    { "id": "selene-r", "name": "Selene de Manicor", "rarity": "rare", "description": "Homines", "image": "" },
-    { "id": "selene-l", "name": "Selene de Manicor", "rarity": "legendaire", "description": "Homines", "image": "" },
+    // Selene de Manin…  ← nom complet à remplacer dans les 4 lignes
+    { "id": "selene-c", "name": "Selene de Manin…", "rarity": "commune", "description": "Homines", "image": "" },
+    { "id": "selene-u", "name": "Selene de Manin…", "rarity": "peu-commune", "description": "Homines", "image": "" },
+    { "id": "selene-r", "name": "Selene de Manin…", "rarity": "rare", "description": "Homines", "image": "" },
+    { "id": "selene-l", "name": "Selene de Manin…", "rarity": "legendaire", "description": "Homines", "image": "" },
     // Wan Xinyue
     { "id": "wan-c", "name": "Wan Xinyue", "rarity": "commune", "description": "Vesperis", "image": "" },
     { "id": "wan-u", "name": "Wan Xinyue", "rarity": "peu-commune", "description": "Vesperis", "image": "" },
@@ -64,10 +64,10 @@
     { "id": "yael-u", "name": "Yael Crestia", "rarity": "peu-commune", "description": "Vesperis", "image": "" },
     { "id": "yael-r", "name": "Yael Crestia", "rarity": "rare", "description": "Vesperis", "image": "" },
     { "id": "yael-l", "name": "Yael Crestia", "rarity": "legendaire", "description": "Vesperis", "image": "" },
-    // Zacharias Montgomeri
-    { "id": "zacharias-c", "name": "Zacharias Montgomeri", "rarity": "commune", "description": "Vesperis", "image": "" },
-    { "id": "zacharias-u", "name": "Zacharias Montgomeri", "rarity": "peu-commune", "description": "Vesperis", "image": "" },
-    { "id": "zacharias-r", "name": "Zacharias Montgomeri", "rarity": "rare", "description": "Vesperis", "image": "" },
-    { "id": "zacharias-l", "name": "Zacharias Montgomeri", "rarity": "legendaire", "description": "Vesperis", "image": "" }
+    // Zacharias Montg…  ← nom complet à remplacer dans les 4 lignes
+    { "id": "zacharias-c", "name": "Zacharias Montg…", "rarity": "commune", "description": "Vesperis", "image": "" },
+    { "id": "zacharias-u", "name": "Zacharias Montg…", "rarity": "peu-commune", "description": "Vesperis", "image": "" },
+    { "id": "zacharias-r", "name": "Zacharias Montg…", "rarity": "rare", "description": "Vesperis", "image": "" },
+    { "id": "zacharias-l", "name": "Zacharias Montg…", "rarity": "legendaire", "description": "Vesperis", "image": "" }
   ]
 }

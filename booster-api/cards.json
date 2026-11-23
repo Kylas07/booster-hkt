@@ -62,7 +62,7 @@
     { "id": "yael-l", "name": "Yael Crestia", "rarity": "legendaire", "description": "torpeur", "image": "https://i.postimg.cc/C1d0R8tp/yael-legendaire.png" },
     // Zacharias
     { "id": "zacharias-c", "name": "Zacharias Montgomerie", "rarity": "commune", "description": "Vesperis", "image": "https://i.postimg.cc/PxfWYXb1/zach-commune.png" },
-    { "id": "zacharias-u", "name": "Zacharias Montgomerie", "rarity": "peu-commune", "homo homini lupus": "Vesperis", "image": "https://i.postimg.cc/FRFy3rbZ/zacharias-peu-commune.png" },
+    { "id": "zacharias-u", "name": "Zacharias Montgomerie", "rarity": "peu-commune", "description": "homo homini lupus", "image": "https://i.postimg.cc/FRFy3rbZ/zacharias-peu-commune.png" },
     { "id": "zacharias-r", "name": "Zacharias Montgomerie", "rarity": "rare", "description": "zacharias' day off", "image": "https://i.postimg.cc/xCjvMfGP/zacharias-rare.png" },
     { "id": "zacharias-l", "name": "Zacharias Montgomerie", "rarity": "legendaire", "description": "la dernière cène", "image": "https://i.postimg.cc/tTR3Wqdd/zacharias-legendaire.png" },
     // Elliott Corvus

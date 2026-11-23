@@ -247,7 +247,7 @@
       /* Cartes (format 7:10, illustrations 350x500) */
       ".rb-card{--rb-c:#8a9099;--mx:50%;--my:50%;--rx:0deg;--ry:0deg;container-type:inline-size;position:relative;width:100%;height:100%;border-radius:10px;overflow:hidden;background:#17131a;transform:perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));transition:transform .15s ease-out;isolation:isolate}",
       ".rb-media{position:absolute;inset:0;z-index:0;overflow:hidden;clip-path:inset(0);border-radius:inherit}",
-      ".rb-art-img{transform:translate(calc((50% - var(--mx)) / 12),calc((50% - var(--my)) / 12))}",
+      ".rb-art-img{transform:translate(calc((50% - var(--mx)) / 12),calc((50% - var(--my)) / 24))}",
       ".rb-art{position:absolute;inset:-10%}",
       ".rb-cap{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:20cqi 6.5cqi 6cqi;background:linear-gradient(to top,rgba(8,6,9,.94),rgba(8,6,9,.6) 55%,transparent);text-align:left}",
       ".rb-nm{font-family:var(--rb-display);font-weight:600;font-size:clamp(13px,8cqi,30px);line-height:1.15;color:#ece6dc}",

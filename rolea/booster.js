@@ -244,9 +244,10 @@
       "@container (max-width:480px){.rb-open{grid-template-columns:1fr;grid-template-areas:'slot' 'pile' 'info';justify-items:center;text-align:center}.rb-pile-col{align-items:center}.rb-info{align-items:center}.rb-new-badge{align-self:center}.rb-info-actions{align-items:stretch;width:100%;max-width:320px}.rb-slot{width:220px}}",
 
       /* Cartes (format 7:10, illustrations 350x500) */
-      ".rb-card{--rb-c:#8a9099;--mx:50%;--my:50%;--rx:0deg;--ry:0deg;container-type:inline-size;position:relative;width:100%;height:100%;border-radius:10px;overflow:hidden;background:#17131a;transform:rotateX(var(--rx)) rotateY(var(--ry));transition:transform .15s ease-out}",
-      ".rb-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}",
-      ".rb-art{position:absolute;inset:0}",
+      ".rb-card{--rb-c:#8a9099;--mx:50%;--my:50%;--rx:0deg;--ry:0deg;container-type:inline-size;position:relative;width:100%;height:100%;border-radius:10px;overflow:hidden;background:#17131a;transform:rotateX(var(--rx)) rotateY(var(--ry));transition:transform .15s ease-out;isolation:isolate;backface-visibility:hidden;-webkit-mask-image:-webkit-radial-gradient(white,black)}",
+      ".rb-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.1);transform-origin:var(--mx) var(--my);transition:transform .15s ease-out}",
+      ".rb-live img{transform:scale(1.14)}",
+      ".rb-art{position:absolute;inset:-6%}",
       ".rb-cap{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:20cqi 6.5cqi 6cqi;background:linear-gradient(to top,rgba(8,6,9,.94),rgba(8,6,9,.6) 55%,transparent);text-align:left}",
       ".rb-nm{font-family:var(--rb-display);font-weight:600;font-size:clamp(13px,8cqi,30px);line-height:1.15;color:#ece6dc}",
       ".rb-rr{margin-top:.4em;font-size:clamp(8px,3.6cqi,11px);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#a39a91}",

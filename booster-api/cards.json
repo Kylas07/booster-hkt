@@ -34,22 +34,22 @@
     { "id": "aster-u", "name": "Aster Sinclair", "rarity": "peu-commune", "description": "Homines", "image": "" },
     { "id": "aster-r", "name": "Aster Sinclair", "rarity": "rare", "description": "Homines", "image": "" },
     { "id": "aster-l", "name": "Aster Sinclair", "rarity": "legendaire", "description": "Homines", "image": "" },
-    // Bellion De Mani…  ← nom complet à remplacer dans les 4 lignes
-    { "id": "bellion-c", "name": "Bellion De Mani…", "rarity": "commune", "description": "Homines", "image": "" },
-    { "id": "bellion-u", "name": "Bellion De Mani…", "rarity": "peu-commune", "description": "Homines", "image": "" },
-    { "id": "bellion-r", "name": "Bellion De Mani…", "rarity": "rare", "description": "Homines", "image": "" },
-    { "id": "bellion-l", "name": "Bellion De Mani…", "rarity": "legendaire", "description": "Homines", "image": "" },
-    // Colombe T.-Farr…  ← nom complet à remplacer dans les 4 lignes
-    { "id": "colombe-c", "name": "Colombe T.-Farr…", "rarity": "commune", "description": "Regeneratio", "image": "" },
-    { "id": "colombe-u", "name": "Colombe T.-Farr…", "rarity": "peu-commune", "description": "Regeneratio", "image": "" },
-    { "id": "colombe-r", "name": "Colombe T.-Farr…", "rarity": "rare", "description": "Regeneratio", "image": "" },
-    { "id": "colombe-l", "name": "Colombe T.-Farr…", "rarity": "legendaire", "description": "Regeneratio", "image": "" },
+    // Bellion
+    { "id": "bellion-c", "name": "Bellion De Manicor", "rarity": "commune", "description": "Homines", "image": "" },
+    { "id": "bellion-u", "name": "Bellion De Manicor", "rarity": "peu-commune", "description": "Homines", "image": "" },
+    { "id": "bellion-r", "name": "Bellion De Manicor", "rarity": "rare", "description": "Homines", "image": "" },
+    { "id": "bellion-l", "name": "Bellion De Manicor", "rarity": "legendaire", "description": "Homines", "image": "" },
+    // Colombe
+    { "id": "colombe-c", "name": "Colombe T.Farrow", "rarity": "commune", "description": "Regeneratio", "image": "" },
+    { "id": "colombe-u", "name": "Colombe T.Farrow", "rarity": "peu-commune", "description": "Regeneratio", "image": "" },
+    { "id": "colombe-r", "name": "Colombe T.Farrow", "rarity": "rare", "description": "Regeneratio", "image": "" },
+    { "id": "colombe-l", "name": "Colombe T.Farrow", "rarity": "legendaire", "description": "Regeneratio", "image": "" },
     // Darcy Crestia
     { "id": "darcy-c", "name": "Darcy Crestia", "rarity": "commune", "description": "Vesperis", "image": "" },
     { "id": "darcy-u", "name": "Darcy Crestia", "rarity": "peu-commune", "description": "Vesperis", "image": "" },
     { "id": "darcy-r", "name": "Darcy Crestia", "rarity": "rare", "description": "Vesperis", "image": "" },
     { "id": "darcy-l", "name": "Darcy Crestia", "rarity": "legendaire", "description": "Vesperis", "image": "" },
-    // Selene de Manin…  ← nom complet à remplacer dans les 4 lignes
+    // Selene
     { "id": "selene-c", "name": "Selene de Manin…", "rarity": "commune", "description": "Homines", "image": "" },
     { "id": "selene-u", "name": "Selene de Manin…", "rarity": "peu-commune", "description": "Homines", "image": "" },
     { "id": "selene-r", "name": "Selene de Manin…", "rarity": "rare", "description": "Homines", "image": "" },
@@ -64,10 +64,30 @@
     { "id": "yael-u", "name": "Yael Crestia", "rarity": "peu-commune", "description": "Vesperis", "image": "" },
     { "id": "yael-r", "name": "Yael Crestia", "rarity": "rare", "description": "Vesperis", "image": "" },
     { "id": "yael-l", "name": "Yael Crestia", "rarity": "legendaire", "description": "Vesperis", "image": "" },
-    // Zacharias Montg…  ← nom complet à remplacer dans les 4 lignes
-    { "id": "zacharias-c", "name": "Zacharias Montg…", "rarity": "commune", "description": "Vesperis", "image": "" },
-    { "id": "zacharias-u", "name": "Zacharias Montg…", "rarity": "peu-commune", "description": "Vesperis", "image": "" },
-    { "id": "zacharias-r", "name": "Zacharias Montg…", "rarity": "rare", "description": "Vesperis", "image": "" },
-    { "id": "zacharias-l", "name": "Zacharias Montg…", "rarity": "legendaire", "description": "Vesperis", "image": "" }
+    // Zacharias
+    { "id": "zacharias-c", "name": "Zacharias Montgomerie", "rarity": "commune", "description": "Vesperis", "image": "" },
+    { "id": "zacharias-u", "name": "Zacharias Montgomerie", "rarity": "peu-commune", "description": "Vesperis", "image": "" },
+    { "id": "zacharias-r", "name": "Zacharias Montgomerie", "rarity": "rare", "description": "Vesperis", "image": "" },
+    { "id": "zacharias-l", "name": "ZachariasMontgomerie", "rarity": "legendaire", "description": "Vesperis", "image": "" },
+    // Elliott Corvus
+    { "id": "elliott-c", "name": "Elliott Corvus", "rarity": "commune", "description": "Vesperis", "image": "" },
+    { "id": "elliott-u", "name": "Elliott Corvus", "rarity": "peu-commune", "description": "Vesperis", "image": "" },
+    { "id": "elliott-r", "name": "Elliott Corvus", "rarity": "rare", "description": "Vesperis", "image": "" },
+    { "id": "elliott-l", "name": "Elliott Corvus", "rarity": "legendaire", "description": "Vesperis", "image": "" },
+    // Elvira
+    { "id": "elvira-c", "name": "Elvira", "rarity": "commune", "description": "Vesperis", "image": "" },
+    { "id": "elvira-u", "name": "Elvira", "rarity": "peu-commune", "description": "Vesperis", "image": "" },
+    { "id": "elvira-r", "name": "Elvira", "rarity": "rare", "description": "Vesperis", "image": "" },
+    { "id": "elvira-l", "name": "Elvira", "rarity": "legendaire", "description": "Vesperis", "image": "" },
+    // Pasiphae Campbell
+    { "id": "pasiphae-c", "name": "Pasiphae Campbell", "rarity": "commune", "description": "Vesperis", "image": "" },
+    { "id": "pasiphae-u", "name": "Pasiphae Campbell", "rarity": "peu-commune", "description": "Vesperis", "image": "" },
+    { "id": "pasiphae-r", "name": "Pasiphae Campbell", "rarity": "rare", "description": "Vesperis", "image": "" },
+    { "id": "pasiphae-l", "name": "Pasiphae Campbell", "rarity": "legendaire", "description": "Vesperis", "image": "" },
+    // Ran Xinyue
+    { "id": "ran-c", "name": "Ran Xinyue", "rarity": "commune", "description": "Vesperis", "image": "" },
+    { "id": "ran-u", "name": "Ran Xinyue", "rarity": "peu-commune", "description": "Vesperis", "image": "" },
+    { "id": "ran-r", "name": "Ran Xinyue", "rarity": "rare", "description": "Vesperis", "image": "" },
+    { "id": "ran-l", "name": "Ran Xinyue", "rarity": "legendaire", "description": "Vesperis", "image": "" }
   ]
 }

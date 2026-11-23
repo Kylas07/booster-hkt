@@ -140,8 +140,8 @@
   }
 
   function injectStyles(el) {
-    if (document.getElementById("rb-styles-v4")) return;
-    var oldStyle = document.getElementById("rb-styles"); if (oldStyle) oldStyle.remove();
+    if (document.getElementById("rb-styles-v5")) return;
+    ["rb-styles", "rb-styles-v4"].forEach(function (id) { var o = document.getElementById(id); if (o) o.remove(); });
 
     if (CONFIG.LOAD_FONTS) {
       var link = document.createElement("link");
@@ -247,7 +247,7 @@
       /* Cartes (format 7:10, illustrations 350x500) */
       ".rb-card{--rb-c:#8a9099;--mx:50%;--my:50%;--rx:0deg;--ry:0deg;container-type:inline-size;position:relative;width:100%;height:100%;border-radius:10px;overflow:hidden;background:#17131a;transform:perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));transition:transform .15s ease-out;isolation:isolate}",
       ".rb-media{position:absolute;inset:0;z-index:0;overflow:hidden;clip-path:inset(0);border-radius:inherit}",
-      ".rb-media img{position:absolute;left:50%;top:50%;width:120% !important;height:120% !important;max-width:none !important;max-height:none !important;margin:0 !important;object-fit:cover;display:block;transform:translate(-50%,-50%) translate(calc((50% - var(--mx)) / 10),calc((50% - var(--my)) / 10))}",
+      ".rb-art-img{transform:translate(calc((50% - var(--mx)) / 12),calc((50% - var(--my)) / 12))}",
       ".rb-art{position:absolute;inset:-10%}",
       ".rb-cap{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:20cqi 6.5cqi 6cqi;background:linear-gradient(to top,rgba(8,6,9,.94),rgba(8,6,9,.6) 55%,transparent);text-align:left}",
       ".rb-nm{font-family:var(--rb-display);font-weight:600;font-size:clamp(13px,8cqi,30px);line-height:1.15;color:#ece6dc}",
@@ -318,7 +318,7 @@
       "@media (prefers-reduced-motion:reduce){.rb *,.rb *::before,.rb *::after,.rb.rb-zoom{animation:none!important;transition:none!important}}"
     ].join("\n");
     var style = document.createElement("style");
-    style.id = "rb-styles-v4";
+    style.id = "rb-styles-v5";
     style.textContent = css;
     document.head.appendChild(style);
     initGlobals();
@@ -341,7 +341,10 @@
     var r = cat.rarityById[card.rarity];
     var img = safeUrl(card.image);
     return '<div class="rb-card rb-tilt rb-f-' + finishOf(card, r) + '" style="--rb-c:' + esc(r && r.color || "#8a9099") + '">' +
-      '<div class="rb-media">' + (img ? '<img src="' + esc(img) + '" alt="" loading="lazy">' : '<div class="rb-art"></div>') + '</div>' +
+      // L'illustration est le fond d'un rectangle plus grand que la carte (aucune règle img du site ne peut le rétrécir)
+      '<div class="rb-media">' + (img
+        ? '<div class="rb-art rb-art-img" role="presentation" style="background:#17131a url(\'' + esc(img.replace(/'/g, "%27")) + '\') center / cover no-repeat"></div>'
+        : '<div class="rb-art"></div>') + '</div>' +
       (CONFIG.SHOW_CARD_TEXT || !img
         ? '<div class="rb-cap"><div class="rb-nm">' + esc(card.name) + '</div><div class="rb-rr">' + esc(r ? r.label : card.rarity) + '</div></div>'
         : "") +

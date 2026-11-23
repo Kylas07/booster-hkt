@@ -30,10 +30,10 @@
     { "id": "asmodeus-r", "name": "Asmodeus", "rarity": "rare", "description": "Vesperis", "image": "" },
     { "id": "asmodeus-l", "name": "Asmodeus", "rarity": "legendaire", "description": "Vesperis", "image": "" },
     // Aster Sinclair
-    { "id": "aster-c", "name": "Aster Sinclair", "rarity": "commune", "description": "Homines", "image": "https://imgup.uk/i/IjBMKr3l.png" },
-    { "id": "aster-u", "name": "Aster Sinclair", "rarity": "peu-commune", "description": "Homines", "image": "https://imgup.uk/i/dQWT8n1K.png" },
-    { "id": "aster-r", "name": "Aster Sinclair", "rarity": "rare", "description": "Homines", "image": "https://imgup.uk/i/z2y08AKU.png" },
-    { "id": "aster-l", "name": "Aster Sinclair", "rarity": "legendaire", "description": "Homines", "image": "https://imgup.uk/i/Z7fU5WFR.png" },
+    { "id": "aster-c", "name": "Aster Sinclair", "rarity": "commune", "description": "Homines", "image": "https://imgup.uk/i/9J1pjs1D.png" },
+    { "id": "aster-u", "name": "Aster Sinclair", "rarity": "peu-commune", "description": "Homines", "image": "https://imgup.uk/i/hngUJaZK.png" },
+    { "id": "aster-r", "name": "Aster Sinclair", "rarity": "rare", "description": "Homines", "image": "https://imgup.uk/i/qlHCRfXT.png" },
+    { "id": "aster-l", "name": "Aster Sinclair", "rarity": "legendaire", "description": "Homines", "image": "https://imgup.uk/i/QgeIXLRf.png" },
     // Bellion
     { "id": "bellion-c", "name": "Bellion De Manicor", "rarity": "commune", "description": "Homines", "image": "" },
     { "id": "bellion-u", "name": "Bellion De Manicor", "rarity": "peu-commune", "description": "Homines", "image": "" },

@@ -26,6 +26,7 @@
   };
 
   if (!window.R) return;
+  window.ROLEA_BOOSTER_VERSION = "v6-zoom";
 
   // ---------------------------------------------------------------------------
   // Utilitaires
@@ -140,8 +141,8 @@
   }
 
   function injectStyles(el) {
-    if (document.getElementById("rb-styles-v5")) return;
-    ["rb-styles", "rb-styles-v4"].forEach(function (id) { var o = document.getElementById(id); if (o) o.remove(); });
+    if (document.getElementById("rb-styles-v6")) return;
+    ["rb-styles", "rb-styles-v4", "rb-styles-v5"].forEach(function (id) { var o = document.getElementById(id); if (o) o.remove(); });
 
     if (CONFIG.LOAD_FONTS) {
       var link = document.createElement("link");
@@ -247,8 +248,8 @@
       /* Cartes (format 7:10, illustrations 350x500) */
       ".rb-card{--rb-c:#8a9099;--mx:50%;--my:50%;--rx:0deg;--ry:0deg;container-type:inline-size;position:relative;width:100%;height:100%;border-radius:10px;overflow:hidden;background:#17131a;transform:perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));transition:transform .15s ease-out;isolation:isolate}",
       ".rb-media{position:absolute;inset:0;z-index:0;overflow:hidden;clip-path:inset(0);border-radius:inherit}",
-      ".rb-art-img{transform:translate(calc((50% - var(--mx)) / 12),calc((50% - var(--my)) / 24))}",
-      ".rb-art{position:absolute;inset:-10%}",
+      ".rb-art-img{transform:scale(1.2) translate(calc((50% - var(--mx)) / 14),calc((50% - var(--my)) / 14))}",
+      ".rb-art{position:absolute;inset:0}",
       ".rb-cap{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:20cqi 6.5cqi 6cqi;background:linear-gradient(to top,rgba(8,6,9,.94),rgba(8,6,9,.6) 55%,transparent);text-align:left}",
       ".rb-nm{font-family:var(--rb-display);font-weight:600;font-size:clamp(13px,8cqi,30px);line-height:1.15;color:#ece6dc}",
       ".rb-rr{margin-top:.4em;font-size:clamp(8px,3.6cqi,11px);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#a39a91}",
@@ -318,7 +319,7 @@
       "@media (prefers-reduced-motion:reduce){.rb *,.rb *::before,.rb *::after,.rb.rb-zoom{animation:none!important;transition:none!important}}"
     ].join("\n");
     var style = document.createElement("style");
-    style.id = "rb-styles-v5";
+    style.id = "rb-styles-v6";
     style.textContent = css;
     document.head.appendChild(style);
     initGlobals();

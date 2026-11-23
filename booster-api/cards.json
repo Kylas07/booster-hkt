@@ -46,38 +46,35 @@
     { "id": "darcy-r", "name": "Darcy Crestia", "rarity": "rare", "description": "Vesperis", "image": "" },
     { "id": "darcy-l", "name": "Darcy Crestia", "rarity": "legendaire", "description": "Vesperis", "image": "" },
     // Selene
-    { "id": "selene-c", "name": "Selene de Manin…", "rarity": "commune", "description": "Homines", "image": "" },
-    { "id": "selene-u", "name": "Selene de Manin…", "rarity": "peu-commune", "description": "Homines", "image": "" },
-    { "id": "selene-r", "name": "Selene de Manin…", "rarity": "rare", "description": "Homines", "image": "" },
-    { "id": "selene-l", "name": "Selene de Manin…", "rarity": "legendaire", "description": "Homines", "image": "" },
+    { "id": "selene-c", "name": "Selene de Manin…", "rarity": "commune", "description": "Homines", "image": "https://i.postimg.cc/RVPcf6gV/selene-commune.png" },
+    { "id": "selene-u", "name": "Selene de Manin…", "rarity": "peu-commune", "description": "Homines", "image": "https://i.postimg.cc/ZKfr3Bwn/selene-peu-commune.png" },
+    { "id": "selene-r", "name": "Selene de Manin…", "rarity": "rare", "description": "Homines", "image": "https://i.postimg.cc/4xmp1f0T/selene-rare.png" },
+    { "id": "selene-l", "name": "Selene de Manin…", "rarity": "legendaire", "description": "Homines", "image": "https://i.postimg.cc/yYfF9gLN/selene-legendaire.png" },
     // Wan Xinyue
-    { "id": "wan-c", "name": "Wan Xinyue", "rarity": "commune", "description": "Vesperis", "image": "" },
-    { "id": "wan-u", "name": "Wan Xinyue", "rarity": "peu-commune", "description": "Vesperis", "image": "" },
-    { "id": "wan-r", "name": "Wan Xinyue", "rarity": "rare", "description": "Vesperis", "image": "" },
-    { "id": "wan-l", "name": "Wan Xinyue", "rarity": "legendaire", "description": "Vesperis", "image": "" },
+    { "id": "wan-c", "name": "Wan Xinyue", "rarity": "commune", "description": "Vesperis", "image": "https://i.postimg.cc/50PrDNfT/wan-commune.png" },
+    { "id": "wan-u", "name": "Wan Xinyue", "rarity": "peu-commune", "description": "Vesperis", "image": "https://i.postimg.cc/G2Mf6hc0/wan-peu-commune.png" },
+    { "id": "wan-r", "name": "Wan Xinyue", "rarity": "rare", "description": "Vesperis", "image": "https://i.postimg.cc/j581BdsY/wan-rare.png" },
+    { "id": "wan-l", "name": "Wan Xinyue", "rarity": "legendaire", "description": "Vesperis", "image": "https://i.postimg.cc/qRmFWMpP/wan-legendaire.png" },
     // Yael Crestia
     { "id": "yael-c", "name": "Yael Crestia", "rarity": "commune", "description": "Vesperis", "image": "https://i.postimg.cc/XJXWr5P8/yael-commune.png" },
     { "id": "yael-u", "name": "Yael Crestia", "rarity": "peu-commune", "description": "Vesperis", "image": "https://i.postimg.cc/rmzTD4H7/yael-peu-commune.png" },
     { "id": "yael-r", "name": "Yael Crestia", "rarity": "rare", "description": "Vesperis", "image": "https://i.postimg.cc/HxjmrMNq/yael-rare.png" },
     { "id": "yael-l", "name": "Yael Crestia", "rarity": "legendaire", "description": "Vesperis", "image": "https://i.postimg.cc/C1d0R8tp/yael-legendaire.png" },
     // Zacharias
-    { "id": "zacharias-c", "name": "Zacharias Montgomerie", "rarity": "commune", "description": "Vesperis", "image": "" },
-    { "id": "zacharias-u", "name": "Zacharias Montgomerie", "rarity": "peu-commune", "description": "Vesperis", "image": "" },
-    { "id": "zacharias-r", "name": "Zacharias Montgomerie", "rarity": "rare", "description": "Vesperis", "image": "" },
-    { "id": "zacharias-l", "name": "Zacharias Montgomerie", "rarity": "legendaire", "description": "Vesperis", "image": "" },
-
-// =====> à partir d'ici je fais !!!!
-
+    { "id": "zacharias-c", "name": "Zacharias Montgomerie", "rarity": "commune", "description": "Vesperis", "image": "https://i.postimg.cc/PxfWYXb1/zach-commune.png" },
+    { "id": "zacharias-u", "name": "Zacharias Montgomerie", "rarity": "peu-commune", "description": "Vesperis", "image": "https://i.postimg.cc/FRFy3rbZ/zacharias-peu-commune.png" },
+    { "id": "zacharias-r", "name": "Zacharias Montgomerie", "rarity": "rare", "description": "Vesperis", "image": "https://i.postimg.cc/xCjvMfGP/zacharias-rare.png" },
+    { "id": "zacharias-l", "name": "Zacharias Montgomerie", "rarity": "legendaire", "description": "Vesperis", "image": "https://i.postimg.cc/tTR3Wqdd/zacharias-legendaire.png" },
     // Elliott Corvus
-    { "id": "elliott-c", "name": "Elliott Corvus", "rarity": "commune", "description": "Vesperis", "image": "" },
-    { "id": "elliott-u", "name": "Elliott Corvus", "rarity": "peu-commune", "description": "Vesperis", "image": "" },
-    { "id": "elliott-r", "name": "Elliott Corvus", "rarity": "rare", "description": "Vesperis", "image": "" },
-    { "id": "elliott-l", "name": "Elliott Corvus", "rarity": "legendaire", "description": "Vesperis", "image": "" },
+    { "id": "elliott-c", "name": "Elliott Corvus", "rarity": "commune", "description": "Vesperis", "image": "https://i.postimg.cc/442dQ6R7/com.png" },
+    { "id": "elliott-u", "name": "Elliott Corvus", "rarity": "peu-commune", "description": "mentalement stable", "image": "https://i.postimg.cc/c1kHBRGw/peu-com.png" },
+    { "id": "elliott-r", "name": "Elliott Corvus", "rarity": "rare", "description": "eepy", "image": "https://i.postimg.cc/tRvTN3GF/rare.png" },
+    { "id": "elliott-l", "name": "Elliott Corvus", "rarity": "legendaire", "description": "méprisant", "image": "https://i.postimg.cc/xjpC3vVH/leg.png" },
     // Elvira
-    { "id": "elvira-c", "name": "Elvira", "rarity": "commune", "description": "Vesperis", "image": "" },
-    { "id": "elvira-u", "name": "Elvira", "rarity": "peu-commune", "description": "Vesperis", "image": "" },
-    { "id": "elvira-r", "name": "Elvira", "rarity": "rare", "description": "Vesperis", "image": "" },
-    { "id": "elvira-l", "name": "Elvira", "rarity": "legendaire", "description": "Vesperis", "image": "" },
+    { "id": "elvira-c", "name": "Elvira", "rarity": "commune", "description": "Vesperis", "image": "https://i.postimg.cc/ZnxWJgDj/com.png" },
+    { "id": "elvira-u", "name": "Elvira", "rarity": "peu-commune", "description": "Vesperis", "image": "https://i.postimg.cc/br9ZqMFC/peu-com.png" },
+    { "id": "elvira-r", "name": "Elvira", "rarity": "rare", "description": "Vesperis", "image": "https://i.postimg.cc/j24DR9kF/rare.png" },
+    { "id": "elvira-l", "name": "Elvira", "rarity": "legendaire", "description": "Vesperis", "image": "https://i.postimg.cc/wMQ19Pbb/leg.png" },
     // Pasiphae Campbell
     { "id": "pasiphae-c", "name": "Pasiphae Campbell", "rarity": "commune", "description": "Vesperis", "image": "" },
     { "id": "pasiphae-u", "name": "Pasiphae Campbell", "rarity": "peu-commune", "description": "Vesperis", "image": "" },

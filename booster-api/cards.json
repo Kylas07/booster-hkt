@@ -14,10 +14,6 @@
     { "id": "legendaire",  "label": "Légendaire",  "weight": 1,  "color": "#a855f7", "finish": "foil" }
   ],
 
-  // Chaque personnage existe en 4 versions (une par rareté).
-  // "id" : ne JAMAIS le changer une fois en jeu (c'est ce qui est stocké dans les collections).
-  // "image" : URL https de l'illustration 350×500 (laisser "" en attendant : la carte s'affiche sans illustration).
-  // "description" : texte affiché quand on agrandit la carte (ici la faction, modifiable).
   "cards": [
     // Amadis Cervantes
     { "id": "amadis-c", "name": "Amadis Cervantes", "rarity": "commune", "description": "Regeneratio", "image": "" },
@@ -60,15 +56,18 @@
     { "id": "wan-r", "name": "Wan Xinyue", "rarity": "rare", "description": "Vesperis", "image": "" },
     { "id": "wan-l", "name": "Wan Xinyue", "rarity": "legendaire", "description": "Vesperis", "image": "" },
     // Yael Crestia
-    { "id": "yael-c", "name": "Yael Crestia", "rarity": "commune", "description": "Vesperis", "image": "" },
-    { "id": "yael-u", "name": "Yael Crestia", "rarity": "peu-commune", "description": "Vesperis", "image": "" },
-    { "id": "yael-r", "name": "Yael Crestia", "rarity": "rare", "description": "Vesperis", "image": "" },
-    { "id": "yael-l", "name": "Yael Crestia", "rarity": "legendaire", "description": "Vesperis", "image": "" },
+    { "id": "yael-c", "name": "Yael Crestia", "rarity": "commune", "description": "Vesperis", "image": "https://i.postimg.cc/XJXWr5P8/yael-commune.png" },
+    { "id": "yael-u", "name": "Yael Crestia", "rarity": "peu-commune", "description": "Vesperis", "image": "https://i.postimg.cc/rmzTD4H7/yael-peu-commune.png" },
+    { "id": "yael-r", "name": "Yael Crestia", "rarity": "rare", "description": "Vesperis", "image": "https://i.postimg.cc/HxjmrMNq/yael-rare.png" },
+    { "id": "yael-l", "name": "Yael Crestia", "rarity": "legendaire", "description": "Vesperis", "image": "https://i.postimg.cc/C1d0R8tp/yael-legendaire.png" },
     // Zacharias
     { "id": "zacharias-c", "name": "Zacharias Montgomerie", "rarity": "commune", "description": "Vesperis", "image": "" },
     { "id": "zacharias-u", "name": "Zacharias Montgomerie", "rarity": "peu-commune", "description": "Vesperis", "image": "" },
     { "id": "zacharias-r", "name": "Zacharias Montgomerie", "rarity": "rare", "description": "Vesperis", "image": "" },
-    { "id": "zacharias-l", "name": "ZachariasMontgomerie", "rarity": "legendaire", "description": "Vesperis", "image": "" },
+    { "id": "zacharias-l", "name": "Zacharias Montgomerie", "rarity": "legendaire", "description": "Vesperis", "image": "" },
+
+// =====> à partir d'ici je fais !!!!
+
     // Elliott Corvus
     { "id": "elliott-c", "name": "Elliott Corvus", "rarity": "commune", "description": "Vesperis", "image": "" },
     { "id": "elliott-u", "name": "Elliott Corvus", "rarity": "peu-commune", "description": "Vesperis", "image": "" },

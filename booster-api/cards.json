@@ -19,6 +19,10 @@
   ],
 
   "cards": [
+    
+    // Chase cards
+    { "id": "colombe-chase", "name": "Colombe T.Farrow", "rarity": "chase", "description": "en tête à tête", "image": "https://i.postimg.cc/6WyzRZ2q/honkai-star-rail-kafka-g2vou2h5qinc4wne.gif" },
+    { "id": "pasiphae-chase", "name": "Pasiphae Campbell", "rarity": "chase", "description": "marée haute", "image": "https://i.postimg.cc/4NfbwH2f/05027cf0106e622c436d74a056e52d46-3345668401596473314.gif" },
     // Amadis Cervantes
     { "id": "amadis-c", "name": "Amadis Cervantes", "rarity": "commune", "description": "Regeneratio", "image": "https://i.postimg.cc/nhd8mkD9/amadis-commune.png" },
     { "id": "amadis-u", "name": "Amadis Cervantes", "rarity": "peu-commune", "description": "l'amoureux des étoiles", "image": "https://i.postimg.cc/Vk7ytRC9/amadis-peu-commune.png" },
@@ -93,10 +97,6 @@
     { "id": "ran-c", "name": "Ran Xinyue", "rarity": "commune", "description": "Vesperis", "image": "https://i.postimg.cc/Wb3w3wTH/ran-commune.png" },
     { "id": "ran-u", "name": "Ran Xinyue", "rarity": "peu-commune", "description": "caprices de l'ange", "image": "https://i.postimg.cc/RVFLFL42/ran-peu-commune.png" },
     { "id": "ran-r", "name": "Ran Xinyue", "rarity": "rare", "description": "don de soi", "image": "https://i.postimg.cc/KvzDzDmX/ran-rare.png" },
-    { "id": "ran-l", "name": "Ran Xinyue", "rarity": "legendaire", "description": "reflets", "image": "https://i.postimg.cc/ZKRxRxJz/ran-legendaire.png" },
-
-    // Chase cards
-    { "id": "colombe-chase", "name": "Colombe T.Farrow", "rarity": "chase", "description": "en tête à tête", "image": "https://i.postimg.cc/6WyzRZ2q/honkai-star-rail-kafka-g2vou2h5qinc4wne.gif" },
-    { "id": "pasiphae-chase", "name": "Pasiphae Campbell", "rarity": "chase", "description": "marée haute", "image": "https://i.postimg.cc/4NfbwH2f/05027cf0106e622c436d74a056e52d46-3345668401596473314.gif" }
+    { "id": "ran-l", "name": "Ran Xinyue", "rarity": "legendaire", "description": "reflets", "image": "https://i.postimg.cc/ZKRxRxJz/ran-legendaire.png" }
   ]
 }

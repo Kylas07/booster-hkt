@@ -3,10 +3,11 @@ using System.Text.Json;
 
 namespace BoosterApi;
 
-public sealed record Rarity(string Id, string Label, int Weight, string? Color = null, string Finish = "normal");
+/// <summary>Group (optionnel) : toutes les cartes de cette rareté sont rangées ensemble dans la collection (ex. "Chase cards").</summary>
+public sealed record Rarity(string Id, string Label, int Weight, string? Color = null, string Finish = "normal", string? Group = null);
 
 /// <summary>Finish (optionnel) : remplace la finition de la rareté pour cette carte (ex. une commune en foil).</summary>
-public sealed record Card(string Id, string Name, string Rarity, string? Image = null, string? Description = null, int Weight = 1, string? Finish = null);
+public sealed record Card(string Id, string Name, string Rarity, string? Image = null, string? Description = null, int Weight = 1, string? Finish = null, string? Group = null);
 
 public sealed class CatalogFile
 {
@@ -26,8 +27,9 @@ public sealed class Catalog
     private readonly Dictionary<string, int> _rank;              // rareté -> rang (0 = la plus commune)
     private readonly Dictionary<string, List<Card>> _byRarity;
     private readonly int _guaranteedRank;
+    private readonly List<Rarity> _drawable;                     // raretés qui ont au moins une carte
 
-    public static readonly string[] Finishes = ["normal", "argent", "or", "foil"];
+    public static readonly string[] Finishes = ["normal", "argent", "or", "foil", "chase"];
 
     private static void CheckFinish(string? finish, string where)
     {
@@ -62,8 +64,11 @@ public sealed class Catalog
                 throw new InvalidDataException($"Carte '{c.Id}' : rareté inconnue '{c.Rarity}'.");
             list.Add(c);
         }
+        // Une rareté sans carte est permise (ex. une catégorie annoncée mais pas encore remplie) : elle ne sort simplement pas.
+        _drawable = f.Rarities.Where(r => _byRarity[r.Id].Count > 0).ToList();
+        if (_drawable.Count == 0) throw new InvalidDataException("Aucune carte dans le catalogue.");
         foreach (var (rarity, list) in _byRarity)
-            if (list.Count == 0) throw new InvalidDataException($"Aucune carte pour la rareté '{rarity}'.");
+            if (list.Count == 0) Console.Error.WriteLine($"Rareté '{rarity}' sans carte : elle ne sortira pas des boosters.");
 
         _guaranteedRank = 0;
         if (!string.IsNullOrWhiteSpace(f.GuaranteedMinRarity) && !_rank.TryGetValue(f.GuaranteedMinRarity, out _guaranteedRank))
@@ -97,7 +102,8 @@ public sealed class Catalog
         for (var i = 0; i < PackSize; i++)
         {
             var minRank = i == PackSize - 1 ? _guaranteedRank : 0;
-            var allowed = Rarities.Where(r => _rank[r.Id] >= minRank).ToList();
+            var allowed = _drawable.Where(r => _rank[r.Id] >= minRank).ToList();
+            if (allowed.Count == 0) allowed = _drawable;
             var rarity = Pick(allowed, r => r.Weight);
             pack.Add(Pick(_byRarity[rarity.Id], c => c.Weight));
         }
@@ -124,9 +130,9 @@ public sealed class Catalog
         guaranteedMinRarity = Rarities[_guaranteedRank].Id,
         rarities = Rarities.Select(r => new
         {
-            r.Id, r.Label, r.Color, r.Finish,
-            percent = Math.Round(100.0 * r.Weight / Rarities.Sum(x => x.Weight), 2),
+            r.Id, r.Label, r.Color, r.Finish, r.Group,
+            percent = _byRarity[r.Id].Count == 0 ? 0 : Math.Round(100.0 * r.Weight / _drawable.Sum(x => x.Weight), 2),
         }),
-        cards = Cards.Select(c => new { c.Id, c.Name, c.Rarity, c.Image, c.Description, c.Finish }),
+        cards = Cards.Select(c => new { c.Id, c.Name, c.Rarity, c.Image, c.Description, c.Finish, c.Group }),
     };
 }

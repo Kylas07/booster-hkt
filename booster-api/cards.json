@@ -5,13 +5,17 @@
   // La dernière carte de chaque booster est au moins de cette rareté
   "guaranteedMinRarity": "peu-commune",
 
-  // Du plus commun au plus rare. "weight" = poids relatif (70 + 22 + 7 + 1 = 100, donc ici ce sont des %)
-  // "finish" = effet de la carte : "normal", "argent", "or" ou "foil" (holographique)
+  // Du plus commun au plus rare. "weight" = poids relatif ; ici le total fait 1000, donc 5 = 0,5 % par carte tirée.
+  // "finish" = effet de la carte : "normal", "argent", "or", "foil" (holographique) ou "chase" (cadre animé bordeaux et or)
+  // Une rareté sans aucune carte ne sort jamais (pratique pour préparer une catégorie avant d'avoir ses cartes).
+  // "group" (optionnel) : range toutes les cartes de la rareté sur une même ligne de la collection, sous ce titre.
+  // Sans "group", les cartes sont rangées par nom (un personnage = une ligne). Une carte peut aussi avoir son propre "group".
   "rarities": [
-    { "id": "commune",     "label": "Commune",     "weight": 70, "color": "#8a9099", "finish": "normal" },
-    { "id": "peu-commune", "label": "Peu commune", "weight": 22, "color": "#9ca3af", "finish": "argent" },
-    { "id": "rare",        "label": "Rare",        "weight": 7,  "color": "#d4a017", "finish": "or" },
-    { "id": "legendaire",  "label": "Légendaire",  "weight": 1,  "color": "#a855f7", "finish": "foil" }
+    { "id": "commune",     "label": "Commune",     "weight": 695, "color": "#8a9099", "finish": "normal" },
+    { "id": "peu-commune", "label": "Peu commune", "weight": 220, "color": "#9ca3af", "finish": "argent" },
+    { "id": "rare",        "label": "Rare",        "weight": 70,  "color": "#d4a017", "finish": "or" },
+    { "id": "legendaire",  "label": "Légendaire",  "weight": 10,  "color": "#a855f7", "finish": "foil" },
+    { "id": "chase",       "label": "Chase",       "weight": 5,   "color": "#c0263f", "finish": "chase", "group": "Chase cards" }
   ],
 
   "cards": [
@@ -89,6 +93,10 @@
     { "id": "ran-c", "name": "Ran Xinyue", "rarity": "commune", "description": "Vesperis", "image": "https://i.postimg.cc/Wb3w3wTH/ran-commune.png" },
     { "id": "ran-u", "name": "Ran Xinyue", "rarity": "peu-commune", "description": "caprices de l'ange", "image": "https://i.postimg.cc/RVFLFL42/ran-peu-commune.png" },
     { "id": "ran-r", "name": "Ran Xinyue", "rarity": "rare", "description": "don de soi", "image": "https://i.postimg.cc/KvzDzDmX/ran-rare.png" },
-    { "id": "ran-l", "name": "Ran Xinyue", "rarity": "legendaire", "description": "reflets", "image": "https://i.postimg.cc/ZKRxRxJz/ran-legendaire.png" }
+    { "id": "ran-l", "name": "Ran Xinyue", "rarity": "legendaire", "description": "reflets", "image": "https://i.postimg.cc/ZKRxRxJz/ran-legendaire.png" },
+
+    // Chase cards
+    { "id": "colombe-chase", "name": "Colombe T.Farrow", "rarity": "chase", "description": "en tête à tête", "image": "https://i.postimg.cc/6WyzRZ2q/honkai-star-rail-kafka-g2vou2h5qinc4wne.gif" },
+    { "id": "pasiphae-chase", "name": "Pasiphae Campbell", "rarity": "chase", "description": "marée haute", "image": "https://i.postimg.cc/4NfbwH2f/05027cf0106e622c436d74a056e52d46-3345668401596473314.gif" }
   ]
 }
